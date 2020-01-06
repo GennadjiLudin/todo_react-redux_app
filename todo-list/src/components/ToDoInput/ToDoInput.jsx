@@ -1,0 +1,29 @@
+import React from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import './ToDoInput.scss';
+
+const ToDoInput = ({value, onChange, onKeyPress}) => {
+    return (
+        <div className="todo-input-wrapper">
+            <FontAwesomeIcon icon={faPlus} className="plus" />
+            <input
+                className="todo-input"
+                placeholder="Add task and press Enter"
+                onChange={onChange}
+                onKeyPress={onKeyPress}
+                value={value}
+            />
+        </div>
+    );
+}
+
+ToDoInput.defaultProps = {
+    onChange: () => {},
+    onKeyPress: () => {},
+    value: '',
+}
+
+export default ToDoInput;

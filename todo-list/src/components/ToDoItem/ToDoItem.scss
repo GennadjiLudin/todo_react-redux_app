@@ -1,0 +1,59 @@
+.todo-item {
+    font-size: 2rem;
+    line-height: 1.5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: .5rem;
+
+    .text {
+        width: 30rem;
+    }
+
+    .mark {
+        margin-right: 1rem;
+        color: #fff;
+        border: .2rem solid black;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        
+        &-complete {
+            display: block;
+            color: gray;
+            margin-right: 1rem;
+            border: none;
+            border: .2rem solid gray;
+            border-radius: 50%;
+        }
+    }
+
+    .delete {
+        opacity: .2;
+        margin-left: auto;
+        color: red;
+        cursor: pointer;
+    }
+
+    &:hover .delete {
+        opacity: 1;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        color: gray;
+    }
+
+    .todo-input {
+        font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+        font-size: 2rem;
+        line-height: 1.5;
+        border: none;
+        border-bottom: 0.125rem solid black;
+        background-color: none;
+        width: 98%;
+    }
+}
+
