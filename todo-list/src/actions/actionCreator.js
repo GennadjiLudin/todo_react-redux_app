@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTERS, CHANGE_TASK } from '../constants';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTERS, CHANGE_TASK, DRAG_HAPPENED } from '../constants';
 
 export const addTask = (id, text, isCompleted) => ({
     type: ADD_TASK,
@@ -27,3 +27,18 @@ export const changeTask = (id, text) => ({
     id,
     text,
 })
+
+export const sortTasks = (
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId
+) => ({
+        type: DRAG_HAPPENED,
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId
+    })

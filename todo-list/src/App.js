@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Title title="ToDo App"/>
+      <Title title="Todo List App"/>
       <Todo />
     </div>
   );

@@ -1,5 +1,5 @@
 .todo-item {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5;
     display: flex;
     justify-content: flex-start;
@@ -12,46 +12,39 @@
 
     .mark {
         margin-right: 1rem;
-        color: #fff;
-        border: .2rem solid black;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
+        color: #24577B;
         
         &-complete {
             display: block;
-            color: gray;
+            color: #7EB12C;
             margin-right: 1rem;
             border: none;
-            border: .2rem solid gray;
-            border-radius: 50%;
+            opacity: .3;
         }
     }
 
     .delete {
-        opacity: .2;
+        opacity: .3;
         margin-left: auto;
-        color: red;
+        color: #ff3100;
         cursor: pointer;
-    }
-
-    &:hover .delete {
-        opacity: 1;
     }
 
     .completed {
         text-decoration: line-through;
-        color: gray;
+        opacity: .3;
+    }
+
+    &:hover .delete, &:hover .mark-complete, &:hover .completed {
+        opacity: 1;
     }
 
     .todo-input {
         font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-        font-size: 2rem;
+        font-size: 1.8rem;
         line-height: 1.5;
         border: none;
-        border-bottom: 0.125rem solid black;
+        border-bottom: 0.125rem solid #0A64A4;
         background-color: none;
         width: 98%;
     }

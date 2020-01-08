@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK } from '../constants';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_TASK, DRAG_HAPPENED } from '../constants';
 import { load } from 'redux-localstorage-simple';
 
 let TASKS = load({namespace: 'todo-list'});
@@ -27,7 +27,7 @@ if(!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
 //     },
 // ];
 
-const tasks = (state = TASKS.tasks, {id, text, isCompleted, type}) => {
+const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId}) => {
     switch(type) {
         case ADD_TASK:
             return [
@@ -41,20 +41,30 @@ const tasks = (state = TASKS.tasks, {id, text, isCompleted, type}) => {
             return [...state].filter(task => task.id !== id);
         case COMPLETE_TASK:
             return [...state].map(task => {
-                if(task.id === id) {
-                    task.isCompleted = !task.isCompleted;
+                let newTask = {...task};
+                if(newTask.id === id) {
+                    newTask.isCompleted = !newTask.isCompleted;
                 }
-                return task;
+                return newTask;
             });
         case CHANGE_TASK:
             return [...state].map(task => {
-                if(task.id === id) {
-                    task.text = text;
+                let newTask = {...task};
+                if(newTask.id === id) {
+                    newTask.text = text;
                 }
-                console.log(text);
-                console.log(id);
-                return tasks;
+                return newTask;
             });
+
+        case DRAG_HAPPENED:
+            let newState = [...state];
+            if(droppableIdStart === droppableIdEnd) {
+                const list = newState.map(task => droppableIdStart === task.id);
+                const taskReplaced = list.tasks.splice(droppableIndexStart, 1);
+                list.tasks.splice(droppableIndexEnd, 0, ...taskReplaced);
+            }
+            return newState;
+
         default:
             return state;
     }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-import { addTask, removeTask, completeTask, changeFilter, changeTask } from '../../actions/actionCreator';
+import { addTask, removeTask, completeTask, changeFilter, changeTask, sortTasks } from '../../actions/actionCreator';
 
 import ToDoInput from '../../components/ToDoInput/ToDoInput';
 import ToDoList from '../../components/ToDoList/ToDoList';
@@ -48,6 +49,21 @@ class Todo extends Component {
 
     getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
 
+    onDragEnd = (result) => {
+        const {destination, source, draggableId} = result;
+        if(!destination) {
+            return;
+        }
+
+        sortTasks(
+            source.droppableId,
+            destination.droppableId,
+            source.index,
+            destination.index,
+            draggableId
+        )
+    }
+
     render() {
 
         const {taskText} = this.state;
@@ -57,11 +73,13 @@ class Todo extends Component {
         const tasksCounter = this.getActiveTasksCounter(tasks);
 
         return (
-            <div className="todo-wrapper">
-                <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
-                {isTasksExist && <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} /> }
-                {isTasksExist && <Footer changeFilter={changeFilter} amount={tasksCounter} activeFilter={filters} />}
-            </div>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <div className="todo-wrapper">
+                    <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
+                    {isTasksExist && <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} /> }
+                    {isTasksExist && <Footer changeFilter={changeFilter} amount={tasksCounter} activeFilter={filters} />}
+                </div>
+            </DragDropContext>
         );
     }
 }
@@ -69,4 +87,4 @@ class Todo extends Component {
 export default connect (({ tasks, filters }) =>({
     tasks,
     filters,
-}), { addTask, removeTask, completeTask, changeFilter, changeTask })(Todo);
+}), { addTask, removeTask, completeTask, changeFilter, changeTask, sortTasks })(Todo);
