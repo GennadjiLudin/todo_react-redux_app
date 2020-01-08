@@ -27,7 +27,7 @@ if(!TASKS || !TASKS.tasks || !TASKS.tasks.length) {
 //     },
 // ];
 
-const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId}) => {
+const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIndexStart, droppableIndexEnd, draggableId}) => {
     switch(type) {
         case ADD_TASK:
             return [
@@ -40,6 +40,7 @@ const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIdSta
         case REMOVE_TASK:
             return [...state].filter(task => task.id !== id);
         case COMPLETE_TASK:
+            console.log(state);
             return [...state].map(task => {
                 let newTask = {...task};
                 if(newTask.id === id) {
@@ -57,12 +58,9 @@ const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIdSta
             });
 
         case DRAG_HAPPENED:
-            let newState = [...state];
-            if(droppableIdStart === droppableIdEnd) {
-                const list = newState.map(task => droppableIdStart === task.id);
-                const taskReplaced = list.tasks.splice(droppableIndexStart, 1);
-                list.tasks.splice(droppableIndexEnd, 0, ...taskReplaced);
-            }
+                let newState = [...state];
+                const taskReplaced = newState.splice(droppableIndexStart, 1);
+                newState.splice(droppableIndexEnd, 0, ...taskReplaced);
             return newState;
 
         default:

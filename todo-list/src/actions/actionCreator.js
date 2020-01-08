@@ -29,15 +29,11 @@ export const changeTask = (id, text) => ({
 })
 
 export const sortTasks = (
-    droppableIdStart,
-    droppableIdEnd,
     droppableIndexStart,
     droppableIndexEnd,
     draggableId
 ) => ({
         type: DRAG_HAPPENED,
-        droppableIdStart,
-        droppableIdEnd,
         droppableIndexStart,
         droppableIndexEnd,
         draggableId

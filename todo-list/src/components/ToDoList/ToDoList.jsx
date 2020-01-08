@@ -10,7 +10,7 @@ import './ToDoList.scss';
 
 const ToDoList = ({tasksList, removeTask, completeTask, changeTask}) => {
     return (
-        <Droppable droppableId={"listId"}>
+        <Droppable droppableId={String(tasksList[0] + 1)}>
             {provided => (
                 <ul {...provided.droppableProps} ref={provided.innerRef} className="todo-list">
                     <TransitionGroup>

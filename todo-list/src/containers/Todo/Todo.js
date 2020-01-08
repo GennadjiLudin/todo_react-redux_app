@@ -49,19 +49,19 @@ class Todo extends Component {
 
     getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
 
-    onDragEnd = (result) => {
-        const {destination, source, draggableId} = result;
+    onDragEnd = ({destination, source, draggableId}) => {
+
         if(!destination) {
             return;
         }
+        
+        const { sortTasks } = this.props;
 
         sortTasks(
-            source.droppableId,
-            destination.droppableId,
             source.index,
             destination.index,
             draggableId
-        )
+        );
     }
 
     render() {
