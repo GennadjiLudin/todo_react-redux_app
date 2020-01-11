@@ -50,3 +50,12 @@
     }
 }
 
+@media (max-width: 600px) {
+    .todo-item {
+        font-size: 1.375rem;
+
+        .todo-input {
+            font-size: 1.375rem;
+        }
+    }
+}
