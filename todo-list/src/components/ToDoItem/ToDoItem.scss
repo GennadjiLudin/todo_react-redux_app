@@ -5,6 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     margin-bottom: .5rem;
+    background-color: #f7f7f7;
 
     .text {
         width: 30rem;
@@ -13,6 +14,7 @@
     .mark {
         margin-right: 1rem;
         color: #24577B;
+        cursor: pointer;
         
         &-complete {
             display: block;

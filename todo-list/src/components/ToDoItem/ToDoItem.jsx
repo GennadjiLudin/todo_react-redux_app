@@ -19,8 +19,10 @@ const ToDoItem = ({text, isCompleted, removeTask, id, completeTask, changeTask, 
         setEdit(!edit);
     }
 
-    const onKeyPressHandle = () => {
-        setEdit(!edit);
+    const onKeyPressHandle = ({key}) => {
+        if(key === 'Enter') {
+            setEdit(!edit);
+        }
     }
 
     return (
@@ -34,8 +36,9 @@ const ToDoItem = ({text, isCompleted, removeTask, id, completeTask, changeTask, 
                     />
                     {edit ? 
                         <input
-                            onBlur={() => onBlurHandle()}
-                            onKeyPress={() => onKeyPressHandle()}
+                            autoFocus={true}
+                            onBlur={onBlurHandle}
+                            onKeyPress={onKeyPressHandle}
                             value={text}
                             onChange={setInputTask}
                             className="todo-input"  

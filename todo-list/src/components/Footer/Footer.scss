@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 2rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
 
     .btn-group {
         display: flex;
@@ -15,6 +15,7 @@
             border: none;
             background: none;
             padding: .3rem;
+            cursor: pointer;
         }
 
         .active {
