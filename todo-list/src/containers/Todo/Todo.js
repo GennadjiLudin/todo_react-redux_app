@@ -32,8 +32,14 @@ class Todo extends Component {
 
             this.setState({
                 taskText: '',
-            })
+            });
         }
+    }
+
+    onBlurHandle = () => {
+        this.setState({
+            taskText: '',
+        });
     }
 
     filterTasks = (tasks, activeFilter) => {
@@ -75,7 +81,7 @@ class Todo extends Component {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="todo-wrapper">
-                    <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
+                    <ToDoInput onKeyPress={this.addTask} onBlur={this.onBlurHandle} onChange={this.handleInputChange} value={taskText} />
                     {isTasksExist && <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} /> }
                     {isTasksExist && <Footer changeFilter={changeFilter} amount={tasksCounter} activeFilter={filters} />}
                 </div>

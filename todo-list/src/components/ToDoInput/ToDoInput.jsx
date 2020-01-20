@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './ToDoInput.scss';
 
-const ToDoInput = ({value, onChange, onKeyPress}) => {
+const ToDoInput = ({value, onChange, onKeyPress, onBlur}) => {
     return (
         <div className="todo-input-wrapper">
             <FontAwesomeIcon icon={faPlus} className="plus" />
@@ -14,6 +14,7 @@ const ToDoInput = ({value, onChange, onKeyPress}) => {
                 placeholder="Add task and press Enter"
                 onChange={onChange}
                 onKeyPress={onKeyPress}
+                onBlur={onBlur}
                 value={value}
             />
         </div>

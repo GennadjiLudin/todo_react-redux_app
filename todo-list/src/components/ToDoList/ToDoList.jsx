@@ -17,7 +17,7 @@ const ToDoList = ({tasksList, removeTask, completeTask, changeTask}) => {
                         {tasksList.map(({id, text, isCompleted}, index) => (
                             <CSSTransition
                                 key={id}
-                                timeout={500}
+                                timeout={300}
                                 classNames="item"
                             >
                                 <ToDoItem

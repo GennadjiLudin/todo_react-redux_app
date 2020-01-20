@@ -47,6 +47,7 @@
         border-bottom: 0.125rem solid #0A64A4;
         background-color: none;
         width: 98%;
+        background-color: #f7f7f7;
     }
 }
 
@@ -54,8 +55,12 @@
     .todo-item {
         font-size: 1.375rem;
 
+        .text {
+            font-size: 1.1rem;
+        }
+
         .todo-input {
-            font-size: 1.375rem;
+            font-size: 1.1rem;
         }
     }
 }

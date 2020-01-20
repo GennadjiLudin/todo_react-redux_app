@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Title from './components/Title/Title'
-import Todo from './containers/Todo/Todo'
+import Title from './components/Title/Title';
+import Todo from './containers/Todo/Todo';
 
 
 import './App.css';

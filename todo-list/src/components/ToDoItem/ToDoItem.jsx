@@ -19,6 +19,10 @@ const ToDoItem = ({text, isCompleted, removeTask, id, completeTask, changeTask, 
         setEdit(!edit);
     }
 
+    const onKeyPressHandle = () => {
+        setEdit(!edit);
+    }
+
     return (
         <Draggable draggableId={String(id)} index={index}>
             {provided => (
@@ -31,6 +35,7 @@ const ToDoItem = ({text, isCompleted, removeTask, id, completeTask, changeTask, 
                     {edit ? 
                         <input
                             onBlur={() => onBlurHandle()}
+                            onKeyPress={() => onKeyPressHandle()}
                             value={text}
                             onChange={setInputTask}
                             className="todo-input"  
