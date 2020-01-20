@@ -2,17 +2,29 @@
     list-style: none;
     margin-top: 2rem;
 }
+
 .item-enter {
     opacity: 0;
 }
+
 .item-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
 }
+
 .item-exit {
     opacity: 1;
 }
+
 .item-exit-active {
     opacity: 0;
     transition: opacity 500ms ease-in;
+}
+
+.empty {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: .5rem;
+    color: #a3a3a3;
+    margin-right: .5rem;
 }

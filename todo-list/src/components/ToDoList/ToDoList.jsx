@@ -9,9 +9,11 @@ import './ToDoList.scss';
 
 
 const ToDoList = ({tasksList, removeTask, completeTask, changeTask}) => {
+    console.log(tasksList.length);
     return (
-        <Droppable droppableId={String(tasksList[0] + 1)}>
+        <Droppable droppableId={String(Date.now())}>
             {provided => (
+                <>
                 <ul {...provided.droppableProps} ref={provided.innerRef} className="todo-list">
                     <TransitionGroup>
                         {tasksList.map(({id, text, isCompleted}, index) => (
@@ -19,7 +21,7 @@ const ToDoList = ({tasksList, removeTask, completeTask, changeTask}) => {
                                 key={id}
                                 timeout={300}
                                 classNames="item"
-                            >
+                            > 
                                 <ToDoItem
                                     completeTask={completeTask}
                                     removeTask={removeTask}
@@ -35,8 +37,12 @@ const ToDoList = ({tasksList, removeTask, completeTask, changeTask}) => {
                     </TransitionGroup>
                     {provided.placeholder}
                 </ul>
+                {tasksList.length === 0 && <span className="empty" >No active task!</span>}
+                </>
             )}
+            
         </Droppable>
+
     );
 }
 

@@ -25,7 +25,7 @@ class Todo extends Component {
     addTask = ({key}) => {
         const {taskText} = this.state;
 
-        if(taskText.length > 3 && key === 'Enter') {
+        if(taskText.trim() !== '' && key === 'Enter') {
             const { addTask } = this.props;
 
             addTask((new Date()).getTime(), taskText, false);
@@ -82,7 +82,7 @@ class Todo extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="todo-wrapper">
                     <ToDoInput onKeyPress={this.addTask} onBlur={this.onBlurHandle} onChange={this.handleInputChange} value={taskText} />
-                    {isTasksExist && <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} /> }
+                    <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} />
                     {isTasksExist && <Footer changeFilter={changeFilter} amount={tasksCounter} activeFilter={filters} />}
                 </div>
             </DragDropContext>
