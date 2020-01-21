@@ -17,7 +17,7 @@ const FILTERS_BTN = [
     },
 ];
 
-const Footer = ({amount, activeFilter, changeFilter}) => {
+const Footer = ({tasks, activeCounter, completedCounter, activeFilter, changeFilter}) => {
     return (
         <div className="footer">
             <div className="btn-group">
@@ -29,7 +29,7 @@ const Footer = ({amount, activeFilter, changeFilter}) => {
                     >{text}</button>
                 ))}
             </div>
-            <span className="amount"> {`${amount} active tasks`} </span>
+            <span className="amount"> {activeFilter === "completed" ? `${completedCounter} completed tasks` : activeFilter === "active" ? `${activeCounter} active tasks` : `${tasks.length} tasks`} </span>
         </div>
     )
 }

@@ -11,7 +11,7 @@ const ToDoInput = ({value, onChange, onKeyPress, onBlur}) => {
             <FontAwesomeIcon icon={faPlus} className="plus" />
             <input
                 className="todo-input"
-                placeholder="Add task and press Enter"
+                placeholder={window.screen.width < 600 ? "Add and press Enter" : "Add task and press Enter"}
                 onChange={onChange}
                 onKeyPress={onKeyPress}
                 onBlur={onBlur}

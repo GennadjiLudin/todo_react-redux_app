@@ -9,7 +9,7 @@
 
 .item-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: opacity 300ms ease-in;
 }
 
 .item-exit {
@@ -18,13 +18,22 @@
 
 .item-exit-active {
     opacity: 0;
-    transition: opacity 500ms ease-in;
+    transition: opacity 50ms ease-in;
 }
 
 .empty {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     line-height: 1.5;
-    margin-bottom: .5rem;
     color: #a3a3a3;
-    margin-right: .5rem;
+    margin-left: .2rem;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .empty {
+        font-size: 1rem;
+    }
 }

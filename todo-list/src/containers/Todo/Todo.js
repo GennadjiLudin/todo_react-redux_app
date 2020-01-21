@@ -54,6 +54,7 @@ class Todo extends Component {
     }
 
     getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
+    getCompletedCounter = tasks => tasks.filter(task => task.isCompleted).length;
 
     onDragEnd = ({destination, source, draggableId}) => {
 
@@ -76,14 +77,15 @@ class Todo extends Component {
         const {tasks, removeTask, completeTask, changeFilter, filters, changeTask} = this.props;
         const isTasksExist = tasks && tasks.length > 0;
         const filteredTasks = this.filterTasks(tasks, filters);
-        const tasksCounter = this.getActiveTasksCounter(tasks);
+        const activeCounter = this.getActiveTasksCounter(tasks);
+        const completedCounter = this.getCompletedCounter(tasks);
 
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="todo-wrapper">
                     <ToDoInput onKeyPress={this.addTask} onBlur={this.onBlurHandle} onChange={this.handleInputChange} value={taskText} />
-                    <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} />
-                    {isTasksExist && <Footer changeFilter={changeFilter} amount={tasksCounter} activeFilter={filters} />}
+                    <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
+                    {isTasksExist && <Footer changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={tasks} activeFilter={filters} />}
                 </div>
             </DragDropContext>
         );
