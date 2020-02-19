@@ -40,7 +40,6 @@ const tasks = (state = TASKS.tasks, {id, text, isCompleted, type, droppableIndex
         case REMOVE_TASK:
             return [...state].filter(task => task.id !== id);
         case COMPLETE_TASK:
-            console.log(state);
             return [...state].map(task => {
                 let newTask = {...task};
                 if(newTask.id === id) {

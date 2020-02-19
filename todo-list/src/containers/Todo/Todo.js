@@ -7,6 +7,7 @@ import { addTask, removeTask, completeTask, changeFilter, changeTask, sortTasks 
 import ToDoInput from '../../components/ToDoInput/ToDoInput';
 import ToDoList from '../../components/ToDoList/ToDoList';
 import Footer from '../../components/Footer/Footer';
+import Socials from '../../components/Socials/Socials';
 
 import './Todo.scss';
 
@@ -83,6 +84,7 @@ class Todo extends Component {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="todo-wrapper">
+                    <Socials />
                     <ToDoInput onKeyPress={this.addTask} onBlur={this.onBlurHandle} onChange={this.handleInputChange} value={taskText} />
                     <ToDoList changeTask={changeTask} completeTask={completeTask} tasksList={filteredTasks} removeTask={removeTask} activeFilter={filters} />
                     {isTasksExist && <Footer changeFilter={changeFilter} activeCounter={activeCounter} completedCounter={completedCounter} tasks={tasks} activeFilter={filters} />}
