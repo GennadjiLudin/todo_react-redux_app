@@ -11,7 +11,7 @@ const socials = [
     {socialImg: 'vk', link: 'https://vk.com/ludingennady'},
     {socialImg: 'facebook', link: 'https://www.facebook.com/RussianGarry1980'},
     {socialImg: 'linkedin', link: 'https://www.linkedin.com/in/gennadiyludin/'},
-    {socialImg: 'github', link: 'https://github.com/GennadjiLudin/react-redux_calendar'},
+    {socialImg: 'github', link: 'https://github.com/GennadjiLudin/todo_react-redux_app'},
 ];
 
 const Socials = () => {
