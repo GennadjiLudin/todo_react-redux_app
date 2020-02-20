@@ -16,6 +16,7 @@ const ToDoInput = ({value, onChange, onKeyPress, onBlur}) => {
                 onKeyPress={onKeyPress}
                 onBlur={onBlur}
                 value={value}
+                maxLength="70"
             />
         </div>
     );
@@ -24,6 +25,7 @@ const ToDoInput = ({value, onChange, onKeyPress, onBlur}) => {
 ToDoInput.defaultProps = {
     onChange: () => {},
     onKeyPress: () => {},
+    onBlur: () => {},
     value: '',
 }
 
